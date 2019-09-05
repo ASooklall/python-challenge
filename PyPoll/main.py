@@ -36,17 +36,26 @@ with open(csvpath, newline="") as csvfile:
 #   -------------------------
 #   Winner: Khan
 #   -------------------------
-bestcandidate = 0
+# bestcandidate = 0
 
-print("Election Results")
-print("-"*30)
-print(f'Total Votes: {len(voteid)}')
-print("-"*30)
-for candidate in candidatelist:
-    print(f'{candidate}: {round((candidatevotes.count(candidate) / len(voteid) * 100))}% ({candidatevotes.count(candidate)})')
-    if round((candidatevotes.count(candidate))) > bestcandidate:
-        winner = candidate
-        bestcandidate = int(candidatevotes.count(candidate))
-print("-"*30)
-print(f'Winner: {winner}')
-print("-"*30)
+def analysis():
+        bestcandidate = 0
+        print("Election Results")
+        print("-"*30)
+        print(f'Total Votes: {len(voteid)}')
+        print("-"*30)
+        # bestcandidate = 0
+        for candidate in candidatelist:
+                print(f'{candidate}: {round((candidatevotes.count(candidate) / len(voteid) * 100))}% ({candidatevotes.count(candidate)})')
+                if round((candidatevotes.count(candidate))) > bestcandidate:
+                        winner = candidate
+                        bestcandidate = int(candidatevotes.count(candidate))
+        print("-"*30)
+        print(f'Winner: {winner}')
+        print("-"*30)
+
+analysis()
+
+newfile = open("poll_analysis.txt","w+")
+newfile.write(analysis())
+newfile.close()

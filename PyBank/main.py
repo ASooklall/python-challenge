@@ -61,20 +61,20 @@ for i in range(len(change)):
 #   Greatest Decrease in Profits: Sep-2013 ($-2196167)
 #   ```
 
+def analysis():
+        print("Financial Analysis")
+        print("-"*30)
+        print(f"Total Months: {len(months)}")
+        print(f"Total: ${sum(total)}")
+        print(f"Averange Change: ${avg(change)}")
+        print(f"Greatest Increase in Profits: {monthprofit} (${greatestprofit})")
+        print(f"Greatest Decrease in Profits: {monthloss} (${greatestloss})")
 
-print("Financial Analysis")
-print("-"*30)
-print(f"Total Months: {len(months)}")
-print(f"Total: ${sum(total)}")
-print(f"Averange Change: ${avg(change)}")
-print(f"Greatest Increase in Profits: {monthprofit} (${greatestprofit})")
-print(f"Greatest Decrease in Profits: {monthloss} (${greatestloss})")
+analysis()
 
 
 # * In addition, your final script should both print the analysis to the terminal and export a text file with the results.
 
-
-# write.txt
-
-
-# print(average(total))
+newfile = open("budget_data.txt","w+")
+newfile.write(analysis())
+newfile.close()
