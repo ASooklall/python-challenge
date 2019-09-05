@@ -15,8 +15,6 @@ with open(csvpath, newline="") as csvfile:
 #   * A complete list of candidates who received votes
         candidatevotes.append(row[2])
         candidatelist.add(row[2])
-    # for candidate in candidatelist:
-    #     print(f'{candidate}: {round((candidatevotes.count(candidate) / len(voteid) * 100))}% ({candidatevotes.count(candidate)})')
 
 #   * The percentage of votes each candidate won
 
@@ -38,7 +36,7 @@ with open(csvpath, newline="") as csvfile:
 #   -------------------------
 #   Winner: Khan
 #   -------------------------
-
+bestcandidate = 0
 
 print("Election Results")
 print("-"*30)
@@ -46,12 +44,9 @@ print(f'Total Votes: {len(voteid)}')
 print("-"*30)
 for candidate in candidatelist:
     print(f'{candidate}: {round((candidatevotes.count(candidate) / len(voteid) * 100))}% ({candidatevotes.count(candidate)})')
-# print(f'Khan: ')
-# print(f'Correy: ')
-# print(f'Li: ')
-# print(f"O'Tooley: ")
+    if round((candidatevotes.count(candidate))) > bestcandidate:
+        winner = candidate
+        bestcandidate = int(candidatevotes.count(candidate))
 print("-"*30)
-print(f' Winner: Khan')
-# for maxcandidate in candidatelist:
-#     print(f' Winner: {max(candidatevotes.count(maxcandidate))}')
+print(f'Winner: {winner}')
 print("-"*30)

@@ -8,11 +8,11 @@ change = []
 with open(csvpath, newline="") as csvfile:
     csvreader = csv.reader(csvfile, delimiter=",")
     next(csvreader, None)
+    data = list(csv.reader(csvfile, delimiter=','))
 
-# print(f'{avg(change)}')
 #  Your task is to create a Python script that analyzes the records to calculate each of the following:
 #   * The total number of months included in the dataset
-    for row in csvreader:
+    for row in data:
         months.append(row)
 
 
@@ -26,7 +26,7 @@ for values in range(len(total)):
     net = 0
     if values == 0:
         net = total[values]
-        change.append(net)
+        # change.append(net)
     else:
         net = total[values]-total[values-1]
         change.append(net)
@@ -34,15 +34,19 @@ def avg(change):
     return sum(change) / len(change)       
 
 
-
 #   * The greatest increase in profits (date and amount) over the entire period
+
 greatestprofit = max(change)
-# monthprofit = 
+for i in range(len(change)):
+    if change[i] == greatestprofit:
+        monthprofit = data[i+1][0]
 
 
 #   * The greatest decrease in losses (date and amount) over the entire period
 greatestloss = (min(change))
-# monthloss = 
+for i in range(len(change)):
+    if change[i] == greatestloss:
+        monthloss = data[i+1][0]
 
 
 
@@ -57,14 +61,14 @@ greatestloss = (min(change))
 #   Greatest Decrease in Profits: Sep-2013 ($-2196167)
 #   ```
 
-monthprofit = "temp"
+
 print("Financial Analysis")
 print("-"*30)
 print(f"Total Months: {len(months)}")
 print(f"Total: ${sum(total)}")
 print(f"Averange Change: ${avg(change)}")
 print(f"Greatest Increase in Profits: {monthprofit} (${greatestprofit})")
-print(f"Greatest Decrease in Profits: {monthprofit} (${greatestloss})")
+print(f"Greatest Decrease in Profits: {monthloss} (${greatestloss})")
 
 
 # * In addition, your final script should both print the analysis to the terminal and export a text file with the results.
