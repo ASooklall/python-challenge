@@ -36,26 +36,28 @@ with open(csvpath, newline="") as csvfile:
 #   -------------------------
 #   Winner: Khan
 #   -------------------------
-# bestcandidate = 0
 
-def analysis():
-        bestcandidate = 0
-        print("Election Results")
-        print("-"*30)
-        print(f'Total Votes: {len(voteid)}')
-        print("-"*30)
-        # bestcandidate = 0
-        for candidate in candidatelist:
-                print(f'{candidate}: {round((candidatevotes.count(candidate) / len(voteid) * 100))}% ({candidatevotes.count(candidate)})')
-                if round((candidatevotes.count(candidate))) > bestcandidate:
-                        winner = candidate
-                        bestcandidate = int(candidatevotes.count(candidate))
-        print("-"*30)
-        print(f'Winner: {winner}')
-        print("-"*30)
 
-analysis()
+def vartext(statement):
+        print(f'{statement}')
+        newfile.write(f'{statement}\n')
+        return
 
 newfile = open("poll_analysis.txt","w+")
-newfile.write(analysis())
+
+bestcandidate = 0
+
+vartext("Election Results")
+vartext("-"*30)
+vartext(f'Total Votes: {len(voteid)}')
+vartext("-"*30)
+for candidate in candidatelist:
+        vartext(f'{candidate}: {round((candidatevotes.count(candidate) / len(voteid) * 100))}% ({candidatevotes.count(candidate)})')
+        if round((candidatevotes.count(candidate))) > bestcandidate:
+                winner = candidate
+                bestcandidate = int(candidatevotes.count(candidate))
+vartext("-"*30)
+vartext(f'Winner: {(winner)}')
+vartext("-"*30)
+
 newfile.close()
